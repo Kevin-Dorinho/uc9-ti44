@@ -7,3 +7,5 @@ quando da erro de não estar configurar o user do git, voce deve ver no git log 
 git config --global user.name "Kevin-Dorinho"
 
 git config --global user.email "kevindorinho@hotmail.com"
+
+salve macaco prego orangutango silvestre da Australia
