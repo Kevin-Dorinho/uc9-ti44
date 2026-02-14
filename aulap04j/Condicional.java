@@ -1,4 +1,4 @@
-package aulap04;
+package aulap04j;
 
 public class Condicional {
 
