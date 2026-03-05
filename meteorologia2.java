@@ -4,7 +4,7 @@ import java.util.Arrays;
 class AnaliseMeteorologica {
 
     static double[][] temperaturas = {
-            {32.5, 23.1},
+            {30.0, 12.1},
             {28.3, 18.7},
             {30.8, 20.9},
             {30.7, 22.9},
@@ -12,7 +12,7 @@ class AnaliseMeteorologica {
     };
 
     static int[][] umidades = {
-            {91, 67, 90},
+            {54, 47, 15},
             {78, 55, 70},
             {90, 65, 80},
             {90, 65, 80},
@@ -101,7 +101,7 @@ class AnaliseMeteorologica {
 
         double soma = 0;
         double maior = temperaturas[0][0];
-        double menor = temperaturas[0][1];
+        double menor = temperaturas[0][0];
         int total = 0;
 
         for (double[] cidade : temperaturas) {
@@ -129,30 +129,30 @@ class AnaliseMeteorologica {
     }
 
     
-    public static String compararCidades(int c1, int c2, int c3, int c4) {
+    public static String compararCidades(int c0, int c1, int c2, int c3) {
 
         double media1 = calcularMediaPonderadaTemperatura(
-                temperaturas[c1][0], temperaturas[c1][1]);
+                temperaturas[c0][0], temperaturas[c0][1]);
 
         double media2 = calcularMediaPonderadaTemperatura(
-                temperaturas[c2][0], temperaturas[c2][1]);
+                temperaturas[c1][0], temperaturas[c1][1]);
 
         double media3 = calcularMediaPonderadaTemperatura(
-                temperaturas[c3][0], temperaturas[c3][1]);
+                temperaturas[c2][0], temperaturas[c2][1]);
 
         double media4 = calcularMediaPonderadaTemperatura(
-                temperaturas[c4][0], temperaturas[c4][1]);
+                temperaturas[c3][0], temperaturas[c3][1]);
         
         
 
         if (media1 > media2 && media1 > media3 && media1 > media4)
-            return "Cidade #" + (c1 + 1) + " é mais quente.";
+            return "Cidade #" + (c0 + 1) + " é mais quente.";
         else if (media2 > media1 && media2 > media3 && media2 > media4)
-            return "Cidade #" + (c2 + 1) + " é mais quente.";
+            return "Cidade #" + (c1 + 1) + " é mais quente.";
         else if (media3 > media1 && media3 > media2 && media3 > media4)
-            return "Cidade #" + (c3 + 1) + " é mais quente.";
+            return "Cidade #" + (c2 + 1) + " é mais quente.";
         else if (media4 > media1 && media4 > media2 && media4 > media3)
-            return "Cidade #" + (c4 + 1) + " é mais quente.";
+            return "Cidade #" + (c3 + 1) + " é mais quente.";
         else
             return "Temperaturas equivalentes.";
     }
