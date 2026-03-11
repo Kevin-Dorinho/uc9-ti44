@@ -28,7 +28,7 @@ class AnaliseMeteorologica {
     public static double calcularMediaPonderadaTemperatura(double max, double min) {
 
         if (max < -50 || max > 60 || min < -50 || min > 60) {
-            throw new IllegalArgumentException("Temperatura fora do intervalo permitido.");
+            System.out.print("Temperatura fora do intervalo permitido.");
         }
 
         return (max * 0.7) + (min * 0.3);
