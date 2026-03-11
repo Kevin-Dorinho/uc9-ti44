@@ -2,7 +2,7 @@
 import java.util.ArrayList;
 import java.util.List;
 
-// ===== ENUMS =====
+// ===== ENUMS Lista fixas de opções =====
 
 enum NivelAlerta {
     VERDE, AMARELO, VERMELHO
@@ -44,7 +44,7 @@ class Cidade {
             // Depois o this.x = x salva cada valor recebido dentro do objeto.
         }
 
-        this.nome = nome;
+        this.nome = nome; // "guarde o valor recebido no atributo interno desta cidade".
         this.temperaturaMaxima = temperaturaMaxima;
         this.temperaturaMinima = temperaturaMinima;
         this.umidades = umidades;
@@ -70,7 +70,7 @@ class Cidade {
      */
     public int calcularUmidadeMedia() {
         int soma = 0;
-        for (int u : umidades) soma += u;
+        for (int u : umidades) soma += u; // Percorre o array de umidades somando todos os valores, depois divide pelo total de medições.
         return soma / umidades.length;
     }
 
@@ -86,7 +86,7 @@ class Cidade {
         if (tempMedia < 15 && umidadeMedia < 50) return ClassificacaoClima.FRIO_E_SECO;
         if (tempMedia > 25) return ClassificacaoClima.QUENTE_MODERADO;
         return ClassificacaoClima.QUENTE_LEVE;
-    }
+    }  // Usa a temperatura e umidade médias para enquadrar a cidade em uma das 5 classificações. As condições são verificadas em ordem a primeira que for verdadeira ganha.
 
     /**
      * Gera um alerta com base na temperatura máxima, umidade e variação térmica.
@@ -95,7 +95,7 @@ class Cidade {
         double variacao = calcularAmplitudeTermica();
         int umidadeMedia = calcularUmidadeMedia();
 
-        if (temperaturaMaxima > 35 || umidadeMedia > 90)                                          return NivelAlerta.VERMELHO;
+        if (temperaturaMaxima > 35 || umidadeMedia > 90) return NivelAlerta.VERMELHO;
         if ((temperaturaMaxima >= 30 && temperaturaMaxima <= 35 && umidadeMedia > 80) || variacao > 15) return NivelAlerta.AMARELO;
         return NivelAlerta.VERDE;
     }
@@ -187,7 +187,7 @@ class SistemaMeteorologico {
 
 // ===== CLASSE PRINCIPAL =====
 
-public class Main {
+public class Meteor {
     public static void main(String[] args) {
 
         // Arrays com os dados das cidades
@@ -219,7 +219,7 @@ public class Main {
                 temperaturas[i][0],  // temperatura máxima
                 temperaturas[i][1],  // temperatura mínima
                 umidades[i]
-            ));
+            )); // O loop cria 5 objetos `Cidade` automaticamente e os adiciona ao sistema, depois gera o relatório final.
         }
         // O loop usa o índice i para acessar a linha correspondente nos três arrays ao mesmo tempo.
         // temperaturas[i][0] é a máxima e [i][1]
