@@ -210,7 +210,7 @@ public class Meteor {
         // Nomes das cidades correspondentes a cada linha dos arrays
         String[] nomes = {"Cidade 1", "Cidade 2", "Cidade 3", "Cidade 4", "Cidade 5"};
 
-        SistemaMeteorologico sistema = new SistemaMeteorologico();
+        SistemaMeteorologico sistema = new SistemaMeteorologico(); //  cria um objeto na memória
 
         // Loop que percorre os arrays e adiciona cada cidade ao sistema
         for (int i = 0; i < nomes.length; i++) {
