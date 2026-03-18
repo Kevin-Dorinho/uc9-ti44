@@ -7,7 +7,7 @@ public class MiniBanco {
 
     // CONSTANTES:
 
-    static final double LIMITE_SAQUE = 1000.00;
+    static final double LIMITE_SAQUE = 0.00;
     static final double TAXA_SAQUE   = 0.02;
 
     static double calcularTotalSaque(double valor){
@@ -48,9 +48,33 @@ public class MiniBanco {
         return valor > 0;
     }
 
+    static void exibirExtrato(String[] extrato, int totalLinhas){
+        System.out.println("\n--Extrato---------------");
+        if (totalLinhas == 0){
+            System.out.println(" Nunhuma movimentação.");
+        } else{
+            for(int i = 0; i < totalLinhas; i++){
+                System.out.println(" " + extrato[i]);
+            }
+        }
+        System.out.println("----------------------");
+    }    
+
+    static int registrar(String[] extrato, int totalLinhas, String linha){
+        extrato[totalLinhas] = linha;
+        return totalLinhas + 1;
+    }
+
+
+
     public static void main(String[] args) {
       Scanner scanner = new Scanner(System.in);
       
+      // variaveis do extrato
+
+      String[] extrato = new String[50];
+      int      totalLinhas = 0;
+
       // variaveis principais da conta
 
       double saldo = 0.0;
@@ -78,6 +102,7 @@ public class MiniBanco {
                 saldo = depositar(saldo, valor);
                 System.out.println("Deposito realizado!");
                 exibirSaldo(saldo);
+                totalLinhas = registrar(extrato, totalLinhas,String.format("DEPÓSITO +R$ %.2f => Saldo R$ %.2f", valor, saldo));
             }
 
             
@@ -97,17 +122,18 @@ public class MiniBanco {
             double taxa = valorSaque * TAXA_SAQUE;
             saldo = sacar(saldo, valorSaque);
             System.out.printf(" Saque realizado. Taxa cobrando: R$ %.2f%n", taxa);
+            totalLinhas = registrar(extrato, totalLinhas, String.format("SAQUE -R$ %.2f => SALDO R$ %.2f", valorSaque, saldo));
            }
            
             // System.out.println("[Sacar - em breve]");
         } else if (opcao == 3){
-            
-            exibirSaldo(saldo);
-            
+            exibirSaldo(saldo);   
             // System.out.println("[Consultar Saldo]");
         } else if (opcao == 4){
-            System.out.println("[Extrato - em breve]");
+            exibirExtrato(extrato, totalLinhas);
+            // System.out.println("[Extrato - em breve]");
         } else if (opcao == 0){
+            exibirExtrato(extrato, totalLinhas);
             System.out.println("Até logo, " + nome + "!");
         } else {
             System.out.println("Opção Inválida.");
